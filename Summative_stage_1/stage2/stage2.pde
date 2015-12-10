@@ -1,16 +1,14 @@
-PImage backImg;
-PImage Arrows;
+PImage backImg2;
 PImage Settings;
 PImage PlayS;
+int xSpeed = -3;
+int xLoc = 0;
+
 
 void setup() {
   size(1000, 500);
 
-  backImg = loadImage("background1.jpg");
-  backImg.resize(1000, 500);
-
-  Arrows = loadImage("arrows.png");
-  Arrows.resize(300, 100);
+  backImg2 = loadImage("background2.png");
 
   //settings icon
   Settings = loadImage("settings.png");
@@ -22,12 +20,18 @@ void setup() {
 }
 
 void draw() {
-  image(backImg, 0, 0);
 
-  println(mouseX, mouseY);
+  //makes background move
+  xLoc=xLoc+xSpeed;
+  image(backImg2, xLoc, 0);
 
-  //Arrows
-  image(Arrows, 200, 320);
+  if (xLoc<-3995) {
+    xSpeed=0;
+  }
+
+  //ground
+  fill(#6C6969);
+  rect(-1, 430, 1420, 300);
 
   //top bar
   noStroke();
@@ -70,16 +74,4 @@ void draw() {
   fill(#18B8D6);
   textSize(25);
   text("SCORE:", 450, 43);
-
-  //draws the portal
-  noStroke();
-  fill(#6D2998);
-  ellipse(900, 350, 150, 250);
-
-  //draws the ground
-  fill(#6C6969);
-  rect(0, 450, 1400, 200);
-
-  fill(#151513);
-  rect(585, 450, 90, 60);
 }
