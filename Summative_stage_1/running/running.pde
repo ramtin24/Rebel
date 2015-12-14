@@ -14,7 +14,7 @@ void setup() {
 
 void draw() {
   background(255) ;
-  
+  tint(255,120);
   image(images[frame] ,0, 0);
   frame++;
   if (frame > 4) frame = 0;
